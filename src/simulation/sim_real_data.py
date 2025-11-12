@@ -37,15 +37,12 @@ MAX_DEMAND_STORE = 30 # Practical upper bound for D_j (Poisson truncation)
 
 def run_simulation():
     """
-    Runs a simulation for one 7-day period demonstrating the three fulfillment policies.
-    
-    Creates 3 stores (small, medium, large) and simulates:
     1. Daily in-store demand (Poisson distributed)
     2. Online order arrivals
     3. Fulfillment decisions using MFP, TMFP, and OSIP
     4. Inventory replenishment
     """
-    print("--- 🚚 Omni-Channel Simulation Start ---")
+    print("--- Omni-Channel Simulation Start ---")
     print(f"Base Parameters: p={P_PRICE}, c_h={C_HOLDING}, c_s={C_SHIPPING}, c_l={C_PENALTY}")
     print(f"Time: R={R_PERIOD_DAYS} days, L={L_LEAD_TIME_DAYS} days")
     
