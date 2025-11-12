@@ -19,15 +19,15 @@
 
 2. **Run simulations**
    ```bash
-   python src/simulation/a.py
-   python src/simulation/b.py
-   python src/simulation/a_corrected.py
+   python src/simulation/sim_theoretical.py
+   python src/simulation/sim_real_data.py
+   python src/simulation/sim_corrected.py
    python src/simulation/policy_comparison.py
    ```
 
 3. **Run optimization**
    ```bash
-   python src/optimization/milp_optimization.py
+   python src/optimization/milp_inventory_optimization.py
    ```
 
 4. **Visualize results**
@@ -37,13 +37,36 @@
    python src/visualization/visual_policy_comparison.py
    ```
 
+5. **Interactive decision tool**
+   ```bash
+   python src/interactive/osip_decision_tool.py
+   ```
+
+## File Descriptions
+
+### Simulations (`src/simulation/`)
+- `sim_theoretical.py` — Original theoretical simulation (base test case)
+- `sim_real_data.py` — Simulation using real product data parameters
+- `sim_corrected.py` — Corrected demand distribution across all stores
+- `policy_comparison.py` — Compares MFP, TMFP, and OSIP policies
+
+### Optimization (`src/optimization/`)
+- `milp_inventory_optimization.py` — Deterministic MILP optimization using Pyomo
+
+### Visualization (`src/visualization/`)
+- `visual_original_sim.py` — Visualizations for original simulation
+- `visual_corrected_sim.py` — Visualizations for corrected simulation
+- `visual_policy_comparison.py` — Policy comparison visualizations
+
+### Interactive Tools (`src/interactive/`)
+- `osip_decision_tool.py` — Interactive OSIP decision maker
+
 ## Issues & Improvements
 
-- Original simulation (`a.py`) assigned all demand to one store. Corrected in `a_corrected.py`.
-- Policy comparison (`policy_comparison.py`) shows which policy is best under different scenarios.
-- MILP optimization (`milp_optimization.py`) provides a benchmark for policy performance.
+- Original simulation assigned all demand to one store. Fixed in `sim_corrected.py`.
+- Policy comparison shows which policy (MFP/TMFP/OSIP) performs best under different scenarios.
+- MILP optimization provides theoretical upper bound benchmark for policy performance.
 - Visualizations help communicate results and compare approaches.
-- (Interactive tool removed on request to simplify repository.)
 
 ## Data
 
