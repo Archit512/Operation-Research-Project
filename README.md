@@ -78,6 +78,34 @@ Raw data now lives only in `Dataset/` (duplicate `data/raw/` placeholders remove
 - numpy, scipy, matplotlib, pyomo
 - GLPK (for MILP)
 
+## References and Sources
+
+### Dataset
+- **Omnichannel Retail Datasets** - Bhowmick, J. & Pazour, J. (2024)
+  - Repository: [JoyjitBhowmick/Omnichannel-Retail-Datasets](https://github.com/JoyjitBhowmick/Omnichannel-Retail-Datasets)
+  - Citation: Joyjit Bhowmick and Jennifer Pazour. "A Connected In-Store and Online Customer Data Set for Omnichannel Retail Logistics Research." In *IIE Annual Conference Proceedings*, pages 1–6. Institute of Industrial and Systems Engineers (IISE), 2024.
+
+### Key Data Files
+- `In-store Customer and Online Order Arrivals.csv` - Customer arrival patterns by hour and day
+- `Product Information.csv` - Product dimensions, weight, and pricing data
+- `Demand and Shopping Behavior.csv` - Customer purchase patterns for in-store and online channels
+- `Product Family Mapping.csv` - Mapping between online (Instacart) and in-store product categories
+- `Aisle ID to Products.csv` - Product family definitions and groupings
+
+### Methodology References
+- **Instacart Dataset** - Online grocery shopping patterns and product categories
+- **Google Popular Times** - In-store customer arrival estimation
+- **Fulfillment Policies**:
+  - MFP (Myopic Fulfillment Policy) - Greedy allocation strategy
+  - TMFP (Threshold-based Myopic Fulfillment Policy) - Inventory-constrained allocation
+  - OSIP (One-Step Policy Improvement) - Dynamic programming approach
+
+### Tools and Libraries
+- **Pyomo** - Python-based optimization modeling language
+- **GLPK** - GNU Linear Programming Kit (open-source solver)
+- **NumPy/SciPy** - Numerical computing and statistical distributions
+- **Matplotlib** - Data visualization
+
 ---
 
 For details, see comments in each script and the full documentation above.

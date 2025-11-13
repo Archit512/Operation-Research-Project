@@ -1,40 +1,19 @@
-"""
-Fulfillment Policies Module
-============================
-Implements different online order fulfillment policies:
-- MFP: Myopic Fulfillment Policy
-- TMFP: Threshold-based Myopic Fulfillment Policy  
-- OSIP: One-Step Policy Improvement
-"""
-
-from .utils import (
-    calculate_expected_contribution_next_day,
-    calculate_threshold,
-    dummy_value_function_vj
-)
+try:
+    from .utils import (
+        calculate_expected_contribution_next_day,
+        calculate_threshold,
+        dummy_value_function_vj
+    )
+except ImportError:
+    from utils import (
+        calculate_expected_contribution_next_day,
+        calculate_threshold,
+        dummy_value_function_vj
+    )
 
 
 def mfp_fulfillment_policy(stores, F_online_orders, p_price, c_shipping, c_penalty, c_holding, max_demand=30):
-    """
-    Myopic Fulfillment Policy (MFP)
     
-    Greedily assigns online orders one-by-one to the store with the highest
-    marginal gain until the gain becomes non-positive.
-    
-    Marginal Gain_j = (p - c_s) + c_l + (EC_j(I-1) - EC_j(I))
-    
-    Args:
-        stores: List of Store objects
-        F_online_orders (int): Number of online orders to fulfill
-        p_price (float): Product price
-        c_shipping (float): Shipping cost per order
-        c_penalty (float): Penalty for unfulfilled order
-        c_holding (float): Holding cost
-        max_demand (int): Upper limit for demand calculations
-        
-    Returns:
-        dict: Allocation decisions {store_id: num_orders_allocated}
-    """
     current_inventories = {s.id: s.inventory for s in stores}
     allocations = {s.id: 0 for s in stores}
     
@@ -71,27 +50,7 @@ def mfp_fulfillment_policy(stores, F_online_orders, p_price, c_shipping, c_penal
 
 
 def tmfp_fulfillment_policy(stores, F_online_orders, t, L, R, p_price, c_shipping, c_penalty, c_holding, max_demand=30):
-    """
-    Threshold-based Myopic Fulfillment Policy (TMFP)
     
-    Similar to MFP but respects an inventory threshold w_j(t).
-    Only fulfills orders from stores with inventory above the threshold.
-    
-    Args:
-        stores: List of Store objects
-        F_online_orders (int): Number of online orders to fulfill
-        t (int): Current time period
-        L (int): Lead time
-        R (int): Review period
-        p_price (float): Product price
-        c_shipping (float): Shipping cost
-        c_penalty (float): Penalty cost
-        c_holding (float): Holding cost
-        max_demand (int): Upper limit for demand
-        
-    Returns:
-        dict: Allocation decisions {store_id: num_orders_allocated}
-    """
     current_inventories = {s.id: s.inventory for s in stores}
     allocations = {s.id: 0 for s in stores}
     

@@ -1,23 +1,15 @@
-"""
-Real Data Simulation (Base Test Case)
-======================================
-Simulates omni-channel fulfillment using theoretical base test case parameters.
-Demonstrates MFP, TMFP, and OSIP policies in action.
-
-Based on Section 5.1 of the research paper.
-"""
-
 import numpy as np
 from scipy.stats import poisson
+import sys
+from pathlib import Path
 
-from .models import Store
-from .policies import mfp_fulfillment_policy, tmfp_fulfillment_policy, osip_fulfillment_policy
-from .utils import calculate_threshold
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent))
 
+from models import Store
+from policies import mfp_fulfillment_policy, tmfp_fulfillment_policy, osip_fulfillment_policy
+from utils import calculate_threshold
 
-# --- Base Test Case Parameters (from Section 5.1) ---
-
-# Economic parameters
 P_PRICE = 100.0     # p, price of the product
 C_HOLDING = 1.0     # c_h, holding cost per day
 C_PRODUCT = 70.0    # c_p, cost of the product
@@ -31,9 +23,6 @@ L_LEAD_TIME_DAYS = 2 # L, fixed lead time
 # Demand parameters
 MAX_DEMAND_STORE = 30 # Practical upper bound for D_j (Poisson truncation)
 
-
-
-# --- Simulation Harness ---
 
 def run_simulation():
     """
